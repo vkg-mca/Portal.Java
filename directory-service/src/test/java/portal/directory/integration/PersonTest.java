@@ -1,20 +1,17 @@
-package portal.directory;
+package portal.directory.integration;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.After;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.testcontainers.containers.MSSQLR2DBCDatabaseContainer;
 import org.testcontainers.containers.MSSQLServerContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -30,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Testcontainers
 //@TestConfiguration
 
-class DirectoryApplicationTests
+class PersonTest
 {
 	static DockerImageName sqlServerImage = DockerImageName.parse("mcr.microsoft.com/mssql/server:2017-latest").asCompatibleSubstituteFor("mcr.microsoft.com/mssql/server");
 	@Container static MSSQLServerContainer sqlContainer = new MSSQLServerContainer(sqlServerImage);
@@ -39,7 +36,7 @@ class DirectoryApplicationTests
 	@Autowired private MockMvc mockMvc;
 	@Autowired private ObjectMapper objectMapper;
 
-public DirectoryApplicationTests()
+public PersonTest()
 {
 	//DockerImageName myImage = DockerImageName.parse("mcr.microsoft.com/mssql/server:2017-latest")
 	//		.asCompatibleSubstituteFor("mcr.microsoft.com/mssql/server");
@@ -61,11 +58,12 @@ public DirectoryApplicationTests()
 
 
 	@Test
+	@Tag("IntegrationTest")
 	void shouldCreatePerson() throws Exception {
 
 		Person personRequest = getPersonRequest();
 		String person = objectMapper.writeValueAsString(personRequest);
-		mockMvc.perform(MockMvcRequestBuilders.post("/api/person")
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/directory")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(person))
 				.andExpect(status().isCreated());
