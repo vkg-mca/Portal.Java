@@ -18,6 +18,10 @@
     <modules>
         <module>finance-service</module>
         <module>directory-service</module>
+        <module>discovery-service</module>
+        <module>identity-service</module>
+        <module>career-service</module>
+        <module>document-service</module>
     </modules>
 
     <properties>
