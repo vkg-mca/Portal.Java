@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PersonService
 {
-@Autowired
+    @Autowired
     private final PersonRepository _repo;
     @Autowired
     private PersonTranslator _translator;
@@ -31,12 +31,20 @@ public class PersonService
 
     public List<Person> GetPerson()
     {
-        List<Person> persons;
+        //List<Person> persons;
         var entities = _repo.findAll();
-        persons = entities.stream().map(entity -> _translator.Translate(entity)).collect(Collectors.toList());
+        var persons = entities.stream().map(entity -> _translator.Translate(entity)).collect(Collectors.toList());
 
         return persons;
     }
+
+//    public List<Person> GetPerson(Character gender)
+//    {
+//        //List<Person> persons;
+//        var entities = _repo.findByGender(gender);
+//        var persons = entities.stream().map(entity -> _translator.Translate(entity)).collect(Collectors.toList());
+//        return persons;
+//    }
 
     public int SavePerson(Person person)
     {

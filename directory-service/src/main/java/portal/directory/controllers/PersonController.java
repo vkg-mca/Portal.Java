@@ -29,6 +29,13 @@ public class PersonController
         return _service.GetPerson(pid);
     }
 
+//    @GetMapping("/{gender}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Person> GetPerson(@PathVariable Character gender)
+//    {
+//        return _service.GetPerson(gender);
+//    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public int SavePerson(@RequestBody Person person)
@@ -37,10 +44,8 @@ public class PersonController
     }
 
     @PutMapping("/{pid}")
-    public int UpdatePerson(@PathVariable int pid, @RequestBody Person person)
-    {
-        return _service.UpdatePerson(pid, person);
-    }
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public int UpdatePerson(@PathVariable int pid, @RequestBody Person person) { return _service.UpdatePerson(pid, person); }
 
     /**
      * @param pid personId

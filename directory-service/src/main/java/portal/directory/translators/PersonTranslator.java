@@ -1,9 +1,10 @@
 package portal.directory.translators;
 
 import org.springframework.stereotype.Component;
+import portal.directory.entities.Person;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class PersonTranslator
@@ -31,4 +32,14 @@ public class PersonTranslator
                 .Description(person.getDescription())
                 .build();
     }
+
+    public List<portal.directory.models.Person> Translate(List<Person> entities)
+    {
+        //List<portal.directory.entities.Person> persons=new ArrayList<>();
+        var persons = entities.stream().map(entity -> Translate(entity)).collect(Collectors.toList());
+        return persons;
+    }
+
+
+
 }
