@@ -20,20 +20,20 @@ public class PersonService
     @Autowired
     private final PersonRepository _repo;
     @Autowired
-    private PersonTranslator _translator;
+    private final PersonTranslator _translator;
 
     @SneakyThrows
     public portal.directory.models.Person GetPerson(int pid)
     {
         var entity = _repo.findById(pid);
-        return entity.map(person -> _translator.Translate(person)).orElse(null);
+        return entity.map(_translator::Translate).orElse(null);
     }
 
     public List<Person> GetPerson()
     {
         //List<Person> persons;
         var entities = _repo.findAll();
-        var persons = entities.stream().map(entity -> _translator.Translate(entity)).collect(Collectors.toList());
+        var persons = entities.stream().map(_translator::Translate).collect(Collectors.toList());
 
         return persons;
     }
