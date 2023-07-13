@@ -16,15 +16,9 @@ import java.util.Date;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@Testcontainers
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class CodeSetRepositoryTest {
-    @Container
-    MySQLContainer mySqlContainer = new MySQLContainer("mysql:latest")
-        .withDatabaseName("directory-service-test-db")
-        .withUsername("root")
-        .withPassword("doniv@0DGB");
 
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class CodeSetRepositoryTest extends BaseTest{
     @Autowired private CodeSetRepository _repository;
     @Test
     @DisplayName("[MethodUnderTest:savePerson]_[Scenario:supplied person]_[ExpectedResult:personId]")
