@@ -52,7 +52,8 @@ public class PersonServiceTest {
     }
 
     @Test
-    void savePerson() {
+    @DisplayName("[MethodUnderTest:savePerson]_[Scenario:supplied person]_[ExpectedResult:personId]")
+    void savePerson_person_personId() {
 
         var expected_model= new portal.directory.models.Person(1,"Name",'M', new Date(),new Date(),"Description");
         var expected_entity = new portal.directory.entities.Person(1,"Name",'M',new Date(),new Date(),"Description");
@@ -66,6 +67,7 @@ public class PersonServiceTest {
         Mockito.verify(_repository,Mockito.times(1) ).save(person_entity.capture());
         assertThat(actual).isEqualTo(1);
         assertThat(person_entity.getValue().getId()).isEqualTo(expected_model.getId());
+        //assertThat(expected_model).usingRecursiveComparison().ignoringFields("Id").isEqualTo(expected_entity);
     }
 
     @Test
