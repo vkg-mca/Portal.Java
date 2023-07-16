@@ -2,7 +2,6 @@ package portal.directory.translators;
 
 import org.springframework.stereotype.Component;
 import portal.directory.entities.Person;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
