@@ -71,10 +71,10 @@ public PersonTest()
 
 	private Person getPersonRequest() {
 		return Person.builder()
-				.Name("testPerson")
-				.Gender('M')
-				.BirthDate(new Date())
-				.Description("Test person")
+				.name("testPerson")
+				.gender('M')
+				.birthDate(new Date())
+				.description("Test person")
 				.build();
 	}
 	@After

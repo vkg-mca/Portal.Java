@@ -1,4 +1,4 @@
-package portal.directory.integration;
+package portal.common.integration;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import portal.directory.repositories.CodeSetRepository;
+import portal.common.repositories.CodeSetRepository;
 
 import java.util.Date;
 
@@ -24,7 +24,7 @@ public class CodeSetRepositoryTest extends BaseTest{
     @DisplayName("[MethodUnderTest:savePerson]_[Scenario:supplied person]_[ExpectedResult:personId]")
     void saveCodeSet_codeSet_codeSetId() {
 
-        var expected_entity = new portal.directory.entities.CodeSet(1,"GENDER","F","Male",new Date(),"Feminine  Gender");
+        var expected_entity = new portal.common.entities.CodeSet(1,"GENDER","F","Male",new Date(),"Feminine  Gender");
         var actual = _repository.save(expected_entity);
         assertThat(actual).usingRecursiveComparison().ignoringFields( "Created").isEqualTo(expected_entity);
     }

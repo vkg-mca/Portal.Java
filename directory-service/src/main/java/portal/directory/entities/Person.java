@@ -10,7 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -24,11 +23,11 @@ public class Person
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
-    private String Name;
-    private Character Gender;
-    private Date BirthDate;
+    private Integer id;
+    private String name;
+    private Character gender;
+    private Date birthDate;
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    private Date Created ;
-    private String Description;
+    private Date created;
+    private String description;
 }

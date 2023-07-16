@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import portal.directory.models.CodeSet;
-import portal.directory.models.Person;
-import portal.directory.services.CodeSetService;
-import portal.directory.services.PersonService;
+import portal.common.models.CodeSet;
+import portal.common.services.CodeSetService;
 
 import java.util.List;
 
@@ -16,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CodeSetController
 {
-    @Autowired
+    @Autowired(required = true)
     private CodeSetService _service;
 
     @GetMapping
@@ -26,12 +24,24 @@ public class CodeSetController
         return _service.GetCodeSet();
     }
 
-    @GetMapping("/{cid}")
+    @GetMapping("/category/{category}")
     @ResponseStatus(HttpStatus.OK)
-    public CodeSet GetCodeSet(@PathVariable int cid)
+    public List<CodeSet> FindByCategory(@PathVariable String category) { return _service.FindByCategory(category); }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CodeSet GetCodeSet(@PathVariable int id)
     {
-        return _service.GetCodeSet(cid);
+        return _service.GetCodeSet(id);
     }
+
+    @GetMapping("/code/{code}")
+    @ResponseStatus(HttpStatus.OK)
+    public CodeSet FindByCode(@PathVariable String code) { return _service.FindByCode(code); }
+
+    @GetMapping("/category-and-code/{category}/{code}")
+    @ResponseStatus(HttpStatus.OK)
+    public CodeSet FindByCategoryAndCode(@PathVariable String category, @PathVariable String code) { return _service.FindByCategoryAndCode(category,code); }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -40,17 +50,13 @@ public class CodeSetController
         return _service.SaveCodeSet(codeset);
     }
 
-    @PutMapping("/{pid}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public int UpdateCodeSet(@PathVariable int cid, @RequestBody CodeSet codeset) { return _service.UpdateCodeSet(cid, codeset); }
+    public int UpdateCodeSet(@PathVariable int id, @RequestBody CodeSet codeset) { return _service.UpdateCodeSet(id, codeset); }
 
-    /**
-     * @param cid codesetId
-     * @return Boolean
-     */
-    @DeleteMapping("/{cid}")
-    public Boolean DeleteCodeSet(@PathVariable int cid)
+    @DeleteMapping("/{id}")
+    public Boolean DeleteCodeSet(@PathVariable int id)
     {
-        return _service.DeleteCodeSet(cid);
+        return _service.DeleteCodeSet(id);
     }
 }

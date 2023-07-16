@@ -1,4 +1,4 @@
-package portal.directory.exceptions;
+package portal.common.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class GlobalException {
     @ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class })
     public ResponseEntity badRequest(RuntimeException ex, WebRequest request){
-        portal.directory.exceptions.ExceptionMessage exceptionMessage = new ExceptionMessage(ex.getMessage(), HttpStatus.BAD_REQUEST, LocalDateTime.now());
+        portal.common.exceptions.ExceptionMessage exceptionMessage = new ExceptionMessage(ex.getMessage(), HttpStatus.BAD_REQUEST, LocalDateTime.now());
         return new ResponseEntity(exceptionMessage,  HttpStatus.BAD_REQUEST);
     }
 

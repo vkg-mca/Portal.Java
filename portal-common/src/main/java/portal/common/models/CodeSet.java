@@ -1,6 +1,5 @@
-package portal.directory.models;
+package portal.common.models;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,10 +13,10 @@ import java.util.Date;
 @Builder//Builder method implements
 public class CodeSet
 {
-    private Integer Id;
-    private String Category;
-    private String Code;
-    private String Value;
-    private Date Created ;
-    private String Description;
+    private Integer id;
+    private String category;
+    private String code;
+    private String value;
+    private Date created;
+    private String description;
 }

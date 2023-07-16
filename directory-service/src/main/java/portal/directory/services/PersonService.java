@@ -38,13 +38,29 @@ public class PersonService
         return persons;
     }
 
-//    public List<Person> GetPerson(Character gender)
-//    {
-//        //List<Person> persons;
-//        var entities = _repo.findByGender(gender);
-//        var persons = entities.stream().map(entity -> _translator.Translate(entity)).collect(Collectors.toList());
-//        return persons;
-//    }
+    public List<Person> FindByIdAndGender(int id, Character gender)
+    {
+        var entities = _repo.findByIdAndGender(id,gender);
+        var persons = entities.stream().map(_translator::Translate).collect(Collectors.toList());
+
+        return persons;
+    }
+    public List<Person> FindByIdOrGender(int id, Character gender)
+    {
+        var entities = _repo.findByIdOrGenderOrderByIdAsc(id,gender);
+        var persons = entities.stream().map(_translator::Translate).collect(Collectors.toList());
+
+        return persons;
+    }
+
+
+    public List<Person> GetPerson(Character gender)
+    {
+        //List<Person> persons;
+        var entities = _repo.findByGender(gender);
+        var persons = entities.stream().map(_translator::Translate).collect(Collectors.toList());
+        return persons;
+    }
 
     public int SavePerson(Person person)
     {

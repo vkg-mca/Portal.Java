@@ -1,20 +1,17 @@
 package portal.directory.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import portal.directory.entities.CodeSet;
 import portal.directory.entities.Person;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person,Integer>
 {
-    //List<Person> findByGender(Character gender);
-    //@Query ("SELECT * FROM Person")
-    //List<Person> FindAll();
+    List<Person> findByGender(Character gender);
+    List<Person> findByIdAndGender(int id, Character gender);
+    List<Person> findByIdOrGenderOrderByIdAsc(int id, Character gender);
 
     //@Query ("SELECT * FROM Person WHERE Id={id}")
     //Person FindById(int Id);

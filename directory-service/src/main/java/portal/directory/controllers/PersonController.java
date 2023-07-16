@@ -29,12 +29,17 @@ public class PersonController
         return _service.GetPerson(pid);
     }
 
-//    @GetMapping("/{gender}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Person> GetPerson(@PathVariable Character gender)
-//    {
-//        return _service.GetPerson(gender);
-//    }
+    @GetMapping("/gender/{gender}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> GetPerson(@PathVariable Character gender) { return _service.GetPerson(gender); }
+
+    @GetMapping("/id-and-gender/{id}/{gender}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> FindByIdAndGender(@PathVariable int id, @PathVariable Character gender)   {   return _service.FindByIdAndGender(id,gender);  }
+
+    @GetMapping("/id-or-gender/{id}/{gender}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> FindByIdOrGenderByOrderByIdAsc(@PathVariable int id, @PathVariable Character gender)   {   return _service.FindByIdOrGender(id,gender);  }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -22,6 +22,7 @@
         <module>identity-service</module>
         <module>career-service</module>
         <module>document-service</module>
+        <module>portal-common</module>
     </modules>
 
     <properties>

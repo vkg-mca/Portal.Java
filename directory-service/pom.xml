@@ -135,6 +135,16 @@
 			<artifactId>mysql</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>portal.common</groupId>
+			<artifactId>portal-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>portal.common</groupId>
+			<artifactId>portal-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 </project>

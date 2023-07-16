@@ -1,4 +1,4 @@
-package portal.directory.exceptions;
+package portal.common.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
