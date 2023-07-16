@@ -12,12 +12,12 @@ public class PersonTranslator
     public portal.directory.models.Person Translate(@org.jetbrains.annotations.NotNull portal.directory.entities.Person person)
     {
        return  portal.directory.models.Person.builder()
-               .Id(person.getId() )
-               .Name(person.getName())
-               .Gender(person.getGender())
-               .BirthDate(person.getBirthDate())
-               .Created(person.getCreated())
-               .Description(person.getDescription())
+               .id(person.getId() )
+               .name(person.getName())
+               .gender(person.getGender())
+               .birthDate(person.getBirthDate())
+               .created(person.getCreated())
+               .description(person.getDescription())
                .build();
     }
 
@@ -25,11 +25,11 @@ public class PersonTranslator
     {
         return  portal.directory.entities.Person.builder()
                 //.Id(person.getId() )
-                .Name(person.getName())
-                .Gender(person.getGender())
-                .BirthDate(person.getBirthDate())
-                .Created(person.getCreated() == null ? new Date() : person.getCreated())
-                .Description(person.getDescription())
+                .name(person.getName())
+                .gender(person.getGender())
+                .birthDate(person.getBirthDate())
+                .created(person.getCreated() == null ? new Date() : person.getCreated())
+                .description(person.getDescription())
                 .build();
     }
 

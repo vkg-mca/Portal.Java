@@ -6,7 +6,8 @@
 		<groupId>vkg.codefactory</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+	<version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>directory-service</artifactId>
 	<description>Personal Directory service using Java Spring Boot</description>
@@ -16,6 +17,9 @@
 		<maven.compiler.target>20</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+<!--	<modules>-->
+<!--		<module>../portal-common</module>-->
+<!--	</modules>-->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -135,6 +139,10 @@
 			<artifactId>mysql</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>portal.common</groupId>
+			<artifactId>portal-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

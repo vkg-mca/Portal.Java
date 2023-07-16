@@ -17,10 +17,7 @@ public class PersonController
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Person> GetPerson()
-    {
-        return _service.GetPerson();
-    }
+    public List<Person> GetPerson() { return _service.GetPerson(); }
 
     @GetMapping("/{pid}")
     @ResponseStatus(HttpStatus.OK)
@@ -29,12 +26,9 @@ public class PersonController
         return _service.GetPerson(pid);
     }
 
-//    @GetMapping("/{gender}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Person> GetPerson(@PathVariable Character gender)
-//    {
-//        return _service.GetPerson(gender);
-//    }
+    @GetMapping("/gender/{gender}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> GetPerson(@PathVariable Character gender)   {   return _service.GetPerson(gender);  }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

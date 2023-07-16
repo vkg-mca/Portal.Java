@@ -4,19 +4,19 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import portal.directory.models.CodeSet;
+import portal.common.models.CodeSet;
 import portal.directory.models.Person;
-import portal.directory.services.CodeSetService;
+import portal.common.services.CodeSetService;
 import portal.directory.services.PersonService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/codeset")
-@AllArgsConstructor
+//@AllArgsConstructor
 public class CodeSetController
 {
-    @Autowired
+    @Autowired(required = true)
     private CodeSetService _service;
 
     @GetMapping

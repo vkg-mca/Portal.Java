@@ -38,13 +38,13 @@ public class PersonService
         return persons;
     }
 
-//    public List<Person> GetPerson(Character gender)
-//    {
-//        //List<Person> persons;
-//        var entities = _repo.findByGender(gender);
-//        var persons = entities.stream().map(entity -> _translator.Translate(entity)).collect(Collectors.toList());
-//        return persons;
-//    }
+    public List<Person> GetPerson(Character gender)
+    {
+        //List<Person> persons;
+        var entities = _repo.findByGender(gender);
+        var persons = entities.stream().map(entity -> _translator.Translate(entity)).collect(Collectors.toList());
+        return persons;
+    }
 
     public int SavePerson(Person person)
     {
