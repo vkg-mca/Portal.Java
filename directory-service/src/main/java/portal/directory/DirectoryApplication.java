@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import portal.common.entities.CodeSet;
+import portal.common.repositories.CodeSetRepository;
 import portal.directory.entities.Person;
 import portal.directory.repositories.PersonRepository;
 
@@ -25,10 +27,18 @@ public class DirectoryApplication {
 	}
 
 	@Bean
-	public CommandLineRunner loadData(PersonRepository repo)
+	public CommandLineRunner loadData(CodeSetRepository codesetRepo, PersonRepository repo)
 	{
 		return args->
 		{
+			CodeSet codeset=new CodeSet();
+			codeset.setCategory("SERVICE");
+			codeset.setCode("NAME");
+			codeset.setValue("Directory Service");
+			codeset.setDescription("Directory MicroService");
+			codeset.setCreated(new Date());
+			codesetRepo.save(codeset);
+
 			Person person=new Person();
 			person.setName("admin");
 			person.setBirthDate(new Date());

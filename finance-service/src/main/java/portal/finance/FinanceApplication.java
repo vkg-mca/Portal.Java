@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import portal.common.entities.CodeSet;
+import portal.common.repositories.CodeSetRepository;
 import portal.finance.entities.*;
 import portal.finance.repositories.*;
 
@@ -29,7 +31,7 @@ public class FinanceApplication {
 	private String mode;
 
 	@Bean
-	public CommandLineRunner loadData(PersonRepository personRepo,BankRepository bankRepo)
+	public CommandLineRunner loadData(CodeSetRepository codesetRepo, PersonRepository personRepo, BankRepository bankRepo)
 	{
 		log.info("Service is running in {} mode",mode);
 		//System.out.println(mode);
@@ -40,6 +42,14 @@ public class FinanceApplication {
 
 		return args->
 		{
+			CodeSet codeset=new CodeSet();
+			codeset.setCategory("SERVICE");
+			codeset.setCode("NAME");
+			codeset.setValue("Finance Service");
+			codeset.setDescription("Finance MicroService");
+			codeset.setCreated(new Date());
+			codesetRepo.save(codeset);
+
 			Person person=new Person();
 			person.setName("admin");
 			person.setBirthDate(new Date());

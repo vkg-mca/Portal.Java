@@ -1,7 +1,7 @@
 package portal.finance.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +77,7 @@ public PersonTest()
 				.Description("Test person")
 				.build();
 	}
-	@After
+	@AfterEach
 	public void after(){
 		sqlContainer.close();
 	}
