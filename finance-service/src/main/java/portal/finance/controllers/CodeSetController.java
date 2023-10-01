@@ -37,7 +37,7 @@ public class CodeSetController
 
     @GetMapping("/code/{code}")
     @ResponseStatus(HttpStatus.OK)
-    public CodeSet FindByCode(@PathVariable String code) { return _service.FindByCode(code); }
+    public List<CodeSet> FindByCode(@PathVariable String code) { return _service.FindByCode(code); }
 
     @GetMapping("/category-and-code/{category}/{code}")
     @ResponseStatus(HttpStatus.OK)

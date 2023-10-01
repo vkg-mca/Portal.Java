@@ -41,6 +41,7 @@ public class DirectoryApplication {
 
 			Person person=new Person();
 			person.setName("admin");
+			person.setGender('M');
 			person.setBirthDate(new Date());
 			person.setCreated(new Date());
 			person.setDescription("Default person entry");

@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface CodeSetRepository extends JpaRepository<CodeSet, Integer> {
     List<CodeSet> findByCategory(String category);
-    Optional<CodeSet> findByCode(String code);
+    List<CodeSet> findByCode(String code);
     Optional<CodeSet> findByCategoryAndCode(String category, String code);
 }

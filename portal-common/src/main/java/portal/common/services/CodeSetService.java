@@ -26,11 +26,13 @@ public class CodeSetService
         return entity.map(_translator::Translate).orElse(null);
     }
 
-    public CodeSet FindByCode(String code)
+    public List<CodeSet> FindByCode(String code)
     {
         var entity = _repo.findByCode(code);
-        return entity.map(_translator::Translate).orElse(null);
+        var codeset = entity.stream().map(_translator::Translate).collect(Collectors.toList());
+        return codeset;
     }
+
     public CodeSet FindByCategoryAndCode(String category, String code)
     {
         var entity = _repo.findByCategoryAndCode(category,code);
@@ -54,8 +56,15 @@ public class CodeSetService
     }
 
 
+    @SneakyThrows
     public int SaveCodeSet(CodeSet codeset)
     {
+        var existing = FindByCategoryAndCode(codeset.getCategory(),codeset.getCode());
+        if(existing!=null)
+        {
+            throw new Exception(String.format("Codeset with category %s and code %s already exists",codeset.getCategory(),codeset.getCode()));
+        }
+
         var entity = _translator.Translate(codeset);
         var saved = _repo.save(entity);
         return saved.getId() ;
