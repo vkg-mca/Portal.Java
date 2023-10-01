@@ -11,7 +11,7 @@
 
     <groupId>portal.career</groupId>
     <artifactId>career-service</artifactId>
-
+    <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>

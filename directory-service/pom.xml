@@ -6,10 +6,12 @@
 		<groupId>vkg.codefactory</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>directory-service</artifactId>
+	<packaging>jar</packaging>
 	<description>Personal Directory service using Java Spring Boot</description>
+
 	<properties>
 		<java.version>20</java.version>
 		<maven.compiler.source>20</maven.compiler.source>

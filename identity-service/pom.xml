@@ -11,6 +11,7 @@
 
     <groupId>portal.identity</groupId>
     <artifactId>identity-service</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>20</maven.compiler.source>
