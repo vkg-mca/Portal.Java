@@ -54,7 +54,7 @@ public class PersonController
 
     /**
      * @param pid personId
-     * @return Boolean
+     * @return Boolean representing if person with pid deleted
      */
     @DeleteMapping("/{pid}")
     public Boolean DeletePerson(@PathVariable int pid)

@@ -58,7 +58,7 @@ public class FinanceApplication {
 			personRepo.save(person);
 
 			Bank bank=new Bank();
-			bank.setName("admin");
+			bank.setName("bank");
 			bank.setTAN("Default TAN");
 			bank.setPAN("Default PAN");
 			bank.setCreated(new Date());
